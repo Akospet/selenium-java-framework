@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Enterprise Selenium Framework Suite">
+    <test name="UI Tests">
+        <packages>
+            <package name="com.akospeteri.selenium.tests.ui"/>
+        </packages>
+    </test>
+</suite>

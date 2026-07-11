@@ -4,21 +4,27 @@ import com.akospeteri.selenium.framework.config.FrameworkConfig;
 import com.akospeteri.selenium.framework.driver.provider.local.ChromeDriverProvider;
 import com.akospeteri.selenium.framework.driver.provider.DriverProvider;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class DriverFactory {
     
+    private static final Logger log = LoggerFactory.getLogger(DriverFactory.class);
+
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
     
     private DriverFactory() {}
     
     public static void createDriver(FrameworkConfig config) {
 
-        DriverProvider provider = switch (config.browser()) {
-            case CHROME -> new ChromeDriverProvider();
-            
-            default -> throw new IllegalArgumentException(
-                    "Unsupported browser: " + config.browser());
+        DriverProvider provider = switch (
+            config.browser()) {
+                case CHROME -> new ChromeDriverProvider();
+                
+                default -> throw new IllegalArgumentException(
+                        "Unsupported browser: " + config.browser());
         };
+        log.info("Creating {} browser", config.browser());
         DRIVER.set(provider.createDriver(config));
     }
     
@@ -29,6 +35,7 @@ public final class DriverFactory {
     public static void quitDriver() {
         WebDriver driver = DRIVER.get();
         if (driver != null) {
+            log.info("Closing browser");
             driver.quit();
             DRIVER.remove();
         }

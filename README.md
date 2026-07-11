@@ -1,25 +1,30 @@
-Why TestNG instead of JUnit 5?
-
-This framework intentionally uses TestNG because it reflects the enterprise automation stacks I worked with 
-in production environments, where TestNG's suite management, listeners, parallel execution and BrowserStack 
-integration were standard.
-A companion repository demonstrates the same architectural principles using Playwright and JUnit 5.
-
 # Enterprise Selenium Test Automation Framework
 
-> Enterprise-grade Selenium Test Automation Framework built with Java 21, Selenium 4, TestNG and BrowserStack.
+> Enterprise-grade Selenium Test Automation Framework built with Java 21, Selenium 4, TestNG and GitHub Actions.
 
-🚧 Project under active development.
+🚧 **Project under active development**
+
+## Why TestNG instead of JUnit 5?
+
+This framework intentionally uses TestNG because it reflects the enterprise automation stacks I worked with in production environments, where TestNG's suite management, listeners, parallel execution and BrowserStack integration were standard.
+
+A companion repository will demonstrate the same architectural principles using Playwright and JUnit 5.
+
+---
 
 ## Goals
 
+- Enterprise-grade Selenium framework
 - Modern Java 21
 - Clean Architecture
 - SOLID principles
-- Enterprise-grade Selenium framework
+- Thread-safe WebDriver management
+- Cross-browser execution
 - Parallel execution
+- CI/CD with GitHub Actions
 - BrowserStack integration
-- GitHub Actions CI
+
+---
 
 ## Technology Stack
 
@@ -27,22 +32,53 @@ A companion repository demonstrates the same architectural principles using Play
 - Maven
 - Selenium 4
 - TestNG
-- WebDriverManager
+- Selenium Manager *(planned migration from WebDriverManager)*
 - SLF4J + Logback
-- BrowserStack
 - GitHub Actions
-
-## Current Status
-
-- [x] Maven project
-- [x] Configuration layer
-- [x] DriverFactory
-- [ ] BasePage
-- [ ] Login Page
-- [ ] Smoke Tests
-- [ ] BrowserStack
-- [ ] Reporting
+- BrowserStack *(planned)*
+- Allure Report *(planned)*
 
 ---
 
-**More documentation will be added as the framework evolves.**
+## Current Features
+
+- ✅ Maven project structure
+- ✅ Configuration layer
+- ✅ DriverFactory
+- ✅ Thread-safe WebDriver management
+- ✅ Page Object Model
+- ✅ BasePage abstraction
+- ✅ Login Page
+- ✅ Inventory Page
+- ✅ TestNG Listeners
+- ✅ Automatic screenshots on test failure
+- ✅ SLF4J + Logback logging
+- ✅ Configurable headless execution
+- ✅ GitHub Actions CI
+
+---
+
+## Planned Features
+
+- Firefox support
+- Edge support
+- Parallel execution
+- BrowserStack integration
+- Allure reporting
+- Selenium Grid
+- Docker support
+
+---
+
+## CI
+
+Every push to the `main` branch automatically:
+
+- Builds the project
+- Executes the TestNG test suite
+- Runs Chrome in headless mode
+- Publishes test results on GitHub Actions
+
+---
+
+**This repository is being developed as an enterprise-style Selenium framework and serves as part of my professional automation testing portfolio.**

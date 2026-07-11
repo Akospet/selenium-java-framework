@@ -1,6 +1,7 @@
 package com.akospeteri.selenium.framework.config;
 
 import com.akospeteri.selenium.framework.driver.BrowserType;
+import com.akospeteri.selenium.framework.driver.ExecutionMode;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +28,10 @@ public final class ConfigReader {
                     Boolean.parseBoolean(resolveProperty(properties, "headless")),
                     Integer.parseInt(resolveProperty(properties, "implicit.wait")),
                     Integer.parseInt(resolveProperty(properties, "explicit.wait")),
+                    ExecutionMode.valueOf(
+                            properties.getProperty("execution.mode").toUpperCase()
+                    ),
+                    properties.getProperty("grid.url"),
                     Integer.parseInt(resolveProperty(properties, "page.load.timeout"))
             );
             

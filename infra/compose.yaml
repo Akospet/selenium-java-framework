@@ -1,0 +1,14 @@
+services:
+
+  selenium-grid:
+
+    image: selenium/standalone-chrome:4.35.0
+
+    container_name: selenium-grid
+
+    ports:
+      - "4444:4444"
+
+    shm_size: 2gb
+
+    restart: unless-stopped

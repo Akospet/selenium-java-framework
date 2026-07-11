@@ -3,6 +3,8 @@ package com.akospeteri.selenium.framework.driver;
 import com.akospeteri.selenium.framework.config.FrameworkConfig;
 import com.akospeteri.selenium.framework.driver.provider.local.ChromeDriverProvider;
 import com.akospeteri.selenium.framework.driver.provider.DriverProvider;
+import com.akospeteri.selenium.framework.driver.provider.local.EdgeDriverProvider;
+import com.akospeteri.selenium.framework.driver.provider.local.FirefoxDriverProvider;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +24,8 @@ public final class DriverFactory {
         DriverProvider provider = switch (
             config.browser()) {
                 case CHROME -> new ChromeDriverProvider();
-                
+                case FIREFOX -> new FirefoxDriverProvider();
+                case EDGE -> provider = new EdgeDriverProvider();
                 default -> throw new IllegalArgumentException(
                         "Unsupported browser: " + config.browser());
         };

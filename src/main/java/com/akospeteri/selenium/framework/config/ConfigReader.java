@@ -22,16 +22,20 @@ public final class ConfigReader {
             properties.load(inputStream);
             
             return new FrameworkConfig(
-                    properties.getProperty("base.url"),
-                    BrowserType.valueOf(properties.getProperty("browser").toUpperCase()),
-                    Boolean.parseBoolean(properties.getProperty("headless")),
-                    Integer.parseInt(properties.getProperty("implicit.wait")),
-                    Integer.parseInt(properties.getProperty("explicit.wait")),
-                    Integer.parseInt(properties.getProperty("page.load.timeout"))
+                    resolveProperty(properties, "base.url"),
+                    BrowserType.valueOf(resolveProperty(properties, "browser").toUpperCase()),
+                    Boolean.parseBoolean(resolveProperty(properties, "headless")),
+                    Integer.parseInt(resolveProperty(properties, "implicit.wait")),
+                    Integer.parseInt(resolveProperty(properties, "explicit.wait")),
+                    Integer.parseInt(resolveProperty(properties, "page.load.timeout"))
             );
             
         } catch (IOException e) {
             throw new RuntimeException("Unable to load configuration.", e);
         }
+    }
+    
+    private String resolveProperty(Properties properties, String key) {
+        return System.getProperty(key, properties.getProperty(key));
     }
 }

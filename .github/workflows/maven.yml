@@ -35,7 +35,7 @@ jobs:
 
       - name: Run TestNG tests
         run: |
-          mvn clean test \
+          mvn --batch-mode clean test \
             -Dbrowser=${{ matrix.browser }} \
             -Dheadless=true
 

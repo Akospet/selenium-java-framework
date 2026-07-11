@@ -9,13 +9,15 @@ import org.slf4j.LoggerFactory;
 
 public final class DriverFactory {
     
-    private static final Logger log = LoggerFactory.getLogger(DriverFactory.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DriverFactory.class);
 
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
     
     private DriverFactory() {}
     
     public static void createDriver(FrameworkConfig config) {
+
+        LOG.info("Creating {} browser", config.browser());
 
         DriverProvider provider = switch (
             config.browser()) {
@@ -24,8 +26,9 @@ public final class DriverFactory {
                 default -> throw new IllegalArgumentException(
                         "Unsupported browser: " + config.browser());
         };
-        log.info("Creating {} browser", config.browser());
+        LOG.info("Creating {} driver", config.browser());
         DRIVER.set(provider.createDriver(config));
+        LOG.info("{} driver created successfully", config.browser());
     }
     
     public static WebDriver getDriver() {
@@ -35,7 +38,7 @@ public final class DriverFactory {
     public static void quitDriver() {
         WebDriver driver = DRIVER.get();
         if (driver != null) {
-            log.info("Closing browser");
+            LOG.info("Closing browser");
             driver.quit();
             DRIVER.remove();
         }

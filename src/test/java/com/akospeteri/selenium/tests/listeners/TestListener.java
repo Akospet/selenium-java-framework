@@ -12,10 +12,6 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        ScreenshotUtil.capture(
-                DriverFactory.getDriver(),
-                result.getMethod().getMethodName()
-        );
-        LOG.error("Test failed. Screenshot saved to: {}", result.getMethod().getMethodName(), result.getThrowable());
+        LOG.error("Test failed. {}", result.getMethod().getMethodName(), result.getThrowable());
     }
 }

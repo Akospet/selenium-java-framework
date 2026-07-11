@@ -2,7 +2,6 @@ package com.akospeteri.selenium.framework.driver.provider.local;
 
 import com.akospeteri.selenium.framework.config.FrameworkConfig;
 import com.akospeteri.selenium.framework.driver.provider.DriverProvider;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -15,8 +14,6 @@ public class FirefoxDriverProvider implements DriverProvider {
     
     @Override
     public WebDriver createDriver(FrameworkConfig config) {
-        
-        WebDriverManager.firefoxdriver().setup();
         
         FirefoxOptions options = new FirefoxOptions();
         

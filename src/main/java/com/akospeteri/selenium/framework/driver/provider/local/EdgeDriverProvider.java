@@ -2,7 +2,6 @@ package com.akospeteri.selenium.framework.driver.provider.local;
 
 import com.akospeteri.selenium.framework.config.FrameworkConfig;
 import com.akospeteri.selenium.framework.driver.provider.DriverProvider;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -15,8 +14,6 @@ public class EdgeDriverProvider implements DriverProvider {
     
     @Override
     public WebDriver createDriver(FrameworkConfig config) {
-        
-        WebDriverManager.edgedriver().setup();
         
         EdgeOptions options = new EdgeOptions();
         

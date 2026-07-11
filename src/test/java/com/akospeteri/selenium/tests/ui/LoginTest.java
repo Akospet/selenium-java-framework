@@ -19,6 +19,6 @@ public class LoginTest extends BaseTest {
         InventoryPage inventoryPage =
                 loginPage.login("standard_user", "secret_sauce");
         
-        assertFalse(inventoryPage.isLoaded());
+        assertTrue(inventoryPage.isLoaded());
     }
 }

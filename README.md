@@ -22,7 +22,9 @@ A companion repository will demonstrate the same architectural principles using 
 - Cross-browser execution
 - Parallel execution
 - CI/CD with GitHub Actions
-- BrowserStack integration
+- Local WebDriver execution
+- Remote Selenium Grid execution
+- Cross-browser support (Chrome, Firefox, Edge)
 
 ---
 

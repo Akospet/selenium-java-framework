@@ -30,9 +30,9 @@ A companion repository will demonstrate the same architectural principles using 
 
 - Java 21
 - Maven
-- Selenium 4
+- Selenium 4.35
 - TestNG
-- Selenium Manager *(planned migration from WebDriverManager)*
+- Selenium Manager
 - SLF4J + Logback
 - GitHub Actions
 - BrowserStack *(planned)*
